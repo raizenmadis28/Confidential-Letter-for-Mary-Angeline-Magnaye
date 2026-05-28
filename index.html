@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential Message for Doc Mary Angeline C. Magnaye🤫</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Dancing+Script:wght@700&family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #fce4ec; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        
+        .card { width: 100%; max-width: 550px; background: white; border-radius: 15px; padding: 40px 30px; box-shadow: 0 10px 25px rgba(233, 30, 99, 0.2); text-align: center; position: relative; }
+        
+        h1 { color: #d81b60; font-family: 'Dancing Script', cursive; font-size: 38px; margin-top: 0; margin-bottom: 10px; }
+        p.subtitle { color: #888; font-size: 15px; margin-bottom: 25px; }
+        
+        /* THE CLICKABLE HEART */
+        .interactive-heart { font-size: 70px; display: inline-block; cursor: pointer; animation: heartbeat 1.5s infinite; transition: transform 0.3s; user-select: none; margin-bottom: 15px; color: #d81b60; }
+        .interactive-heart:hover { transform: scale(1.2); }
+        .interactive-heart.processing { animation: fastbeat 0.3s infinite; pointer-events: none; }
+        
+        @keyframes heartbeat { 0% { transform: scale(1); } 15% { transform: scale(1.2); } 30% { transform: scale(1); } 45% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        @keyframes fastbeat { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
+        .click-instruction { color: #d81b60; font-weight: bold; font-size: 14px; margin-bottom: 25px; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* GREEN TERMINAL BLOCK */
+        .terminal-block { background: #1a1a1a; color: #22ee22; font-family: 'Courier Prime', monospace; padding: 25px; border-radius: 10px; font-size: 16px; text-align: left; line-height: 1.6; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); margin-bottom: 25px; display: block; border: 2px solid #333; }
+        .terminal-block strong { color: #ffeb3b; }
+
+        /* HIDDEN REAL MESSAGE */
+        #real-message { display: none; }
+        
+        /* 6 PICTURES GALLERY */
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 25px; border-top: 2px dashed #f8bbd0; padding-top: 25px; display: none; opacity: 0; transition: opacity 1.5s; }
+        .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; border: 2px solid #f8bbd0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffe082; }
+        
+        /* BUTTON */
+        .btn-secondary { width: 100%; padding: 15px; background: #ffe082; color: #d81b60; border: none; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 20px; font-family: 'Poppins', sans-serif; display: none; opacity: 0; transition: opacity 1.5s; }
+        .btn-secondary:hover { background: #ffd54f; }
+    </style>
+</head>
+<body>
+
+    <!-- STEP 1: MAIN ENCRYPTED CARD -->
+    <div id="main-card" class="card">
+        <!-- TITLE -->
+        <h1 id="main-title">Confidential Message 🤫</h1>
+        <p class="subtitle" id="main-subtitle">For Ms. Mary Angeline Magnaye</p>
+
+        <!-- THE CLICKABLE HEART BUTTON (HTML Code: &#10084;) -->
+        <div id="heart-btn" class="interactive-heart" onclick="startDecryption()">&#10084;</div>
+        <div id="instruction-text" class="click-instruction">Pindutin ang puso para i-decrypt...</div>
+
+        <!-- GREEN TERMINAL BLOCK -->
+        <div id="message-display" class="terminal-block">
+            01001000 01100001 01110000 01110000 01111001 00100000 01000010 01101001 01110010 01110100 01101000 01100001 01111001 00100001<br><br>
+            * ENCRYPTED FILE *<br>
+            Awaiting user clearance...<br>
+            Please interact with the security key above to unlock the patient's confession protocol.
+        </div>
+
+        <!-- 6 PICS GALLERY (BINAGO PARA SA MAY UNDERSCORE "_") -->
+        <div id="gallery" class="gallery">
+            <img src="pic_1.png" alt="Core Memory 1">
+            <img src="pic_2.png" alt="Core Memory 2">
+            <img src="pic_3.png" alt="Core Memory 3">
+            <img src="pic_4.png" alt="Core Memory 4">
+            <img src="pic_5.png" alt="Core Memory 5">
+            <img src="pic_6.png" alt="Core Memory 6">
+        </div>
+
+        <!-- REPLY BUTTON -->
+        <button id="reply-btn" class="btn-secondary" onclick="showReply()">Send Doctor's Reply to Benedikt 💌</button>
+    </div>
+
+    <!-- STEP 2: REPLY BOX -->
+    <div id="reply-card" class="card" style="display: none;">
+        <h1>Your Reply 💬</h1>
+        <p style="font-size: 14px; color: #666; margin-bottom: 15px;">Ano'ng diagnosis mo sa feelings ng pasyente mo, Doc?</p>
+        <textarea id="angelineReply" rows="6" placeholder="Type your message here..." style="width: 100%; padding: 15px; font-size: 16px; border: 2px solid #f8bbd0; border-radius: 10px; box-sizing: border-box; resize: none; font-family: 'Poppins', sans-serif; outline: none;"></textarea>
+        
+        <button class="btn-secondary" style="display: block; opacity: 1; background: #d81b60; color: white;" onclick="sendEmail()">Send Confession Reply 🚀</button>
+    </div>
+
+    <!-- STEP 3: TOTOONG MESSAGE (Nakatago bago pindutin) -->
+    <div id="real-message">
+        Happy 20th Birthday, Future RMT Mary Angeline Magnaye! 🎂 😊 🩵<br><br>
+        Pasensya na, ako 'yung naging patient sa lab report mo. Gusto ko lang sabihin na best wishes sa'yo bilang friend mo since SHS. Wish ko na maabot mo lahat ng pangarap mo at maging RMT ka na soon. Alam kong kayang-kaya mo 'yan! ✨ 🌸 🩷<br><br>
+        Salamat sa pagiging mapangalaga na kaibigan. Tulad nga ng nasa diagnosis... miss na kita. Enjoy your day! 🌻 🩵<br><br>
+        As your patient, isa lang ang hiling ko... sana mapansin mo ako kahit college na tayo. 🌹🩵🩷<br><br>
+        Love,<br><strong>Renee Benedikt S. Madis 🌻</strong>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function startDecryption() {
+            // Processing state
+            const heart = document.getElementById('heart-btn');
+            heart.classList.add('processing');
+            
+            document.getElementById('instruction-text').innerText = "Decrypting feelings...";
+            document.getElementById('instruction-text').style.color = "#4caf50";
+            
+            // Terminal animation
+            const display = document.getElementById('message-display');
+            display.innerHTML = "Accessing hidden files...<br>Bypassing security...<br>Extracting memories... [|||||||||| 100%]";
+
+            // Delay for dramatic effect
+            setTimeout(() => {
+                revealFinal();
+            }, 2500);
+        }
+
+        function revealFinal() {
+            // Change title
+            document.getElementById('main-title').innerText = "Happy 20th Birthday! 🎂";
+            document.getElementById('main-title').style.borderBottom = "2px dashed #f8bbd0";
+            document.getElementById('main-title').style.paddingBottom = "10px";
+            document.getElementById('main-subtitle').innerText = "Ang confidential diagnosis para sa birthday girl...";
+
+            // Change Heart to Unlock Icon (Emoji)
+            document.getElementById('heart-btn').innerText = "🔓";
+            document.getElementById('heart-btn').classList.remove('processing');
+            document.getElementById('heart-btn').style.animation = "none";
+            document.getElementById('heart-btn').style.cursor = "default";
+            document.getElementById('instruction-text').style.display = "none";
+
+            // Reveal letter
+            const realText = document.getElementById('real-message').innerHTML;
+            document.getElementById('message-display').innerHTML = realText;
+
+            // Show gallery and reply button
+            const gallery = document.getElementById('gallery');
+            const replyBtn = document.getElementById('reply-btn');
+            
+            gallery.style.display = 'grid';
+            replyBtn.style.display = 'block';
+
+            // Fade in effect
+            setTimeout(() => {
+                gallery.style.opacity = '1';
+                replyBtn.style.opacity = '1';
+            }, 100);
+        }
+
+        function showReply() {
+            document.getElementById('main-card').style.display = 'none';
+            document.getElementById('reply-card').style.display = 'block';
+        }
+
+        function sendEmail() {
+            const replyText = document.getElementById('angelineReply').value;
+            if(replyText.trim() === "") { 
+                alert("Uy, wag mo namang i-seen lang! Type ka ng kahit konti! 😊"); 
+                return; 
+            }
+            
+            const email = "reneemadis28@gmail.com";
+            const subject = encodeURIComponent("Reply to Your Birthday Confession 💌");
+            const body = encodeURIComponent(replyText);
+            
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+            
+            setTimeout(() => {
+                alert("Message ready to send! Sana good news 'yan! 😊");
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
